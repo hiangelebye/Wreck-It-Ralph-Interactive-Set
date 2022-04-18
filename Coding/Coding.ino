@@ -8,12 +8,19 @@ Description: button and servo program
 //Servo code library
 #include<Servo.h>;
 
-//VARIABLES
-Servo myServo;
+//CONSTANTS
 const int raceSWITCH = 7;
 const int mountainSWITCH = 9;
 const int raceSERVOPIN = 11;
 const int mountainSERVOPIN = 12;
+
+//VARIABLES
+int raceValue;
+int mountainValue;
+Servo raceServo;
+Servo mountainServo;
+
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -30,9 +37,9 @@ void loop() {
   raceValue = digitalRead(raceSWITCH);
   mountainValue = digitalRead(mountainSWITCH);
   //if button is pressed, swivel servo 180 degrees
-  if(raceValue == HIGH && mountainValue == HIGH){
+  if(raceValue == HIGH || mountainValue == HIGH){
     raceServo.write(180);
   }else{
-    mountainValue.write(180);
+    mountainServo.write(180);
   }
 }
